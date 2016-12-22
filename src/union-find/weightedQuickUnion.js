@@ -57,7 +57,14 @@ class WeightedQuickUnion {
 
   root(i) {
     // Chase parent pointers until the root is reached
-    while (i !== this.id[i]) { i = this.id[i]; }
+    while (i !== this.id[i]) {
+      while (this.id[i] !== this.id[this.id[i]]) {
+        // Two-pass implementation of path compression, pointing to the root
+        this.id[i] = this.id[this.id[i]];
+      }
+      i = this.id[i];
+    }
+
     return i;
   }
 
