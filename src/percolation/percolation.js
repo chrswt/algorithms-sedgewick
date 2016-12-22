@@ -130,7 +130,7 @@ class Percolation {
   }
 }
 
-const percolateSim = (n) => {
+const percolationSim = (n) => {
   const p = new Percolation(n);
   let random;
   let count = 0;
@@ -148,10 +148,10 @@ const percolateSim = (n) => {
 }
 
 if (!module.parent) {
-  console.log(percolateSim(500));
+  console.log(percolationSim(500));
 }
 
 module.exports = {
   Percolation: Percolation,
-  percolateSim: percolateSim,
+  percolationSim: percolationSim,
 }
