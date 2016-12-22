@@ -12,5 +12,6 @@ The notes were written for personal benefit and reference and were intended neit
 ## Table of Contents
 1. Case Study: Union Find
   - [Chapter Notes](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-union-find.md)
-    - Covered: dynamic connectivity, quick-find, quick-union, weighted quick-union, path compression
+    - dynamic connectivity, quick-find, quick-union, weighted quick-union, path compression
   - [Percolation](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolation.md)
+  - [Percolation Stats](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolationStats.md)
