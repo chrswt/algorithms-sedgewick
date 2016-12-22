@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class QuickFind {
+class QuickUnion {
   constructor() {
     this.numComponents = null;
     this.id = [];
@@ -34,26 +34,25 @@ class QuickFind {
 
   union(p, q) {
     // Put p and q into the same component
-    let pID = this.find(p);
-    let qID = this.find(q);
+    let pRoot = this.root(p);
+    let qRoot = this.root(q);
 
-    if (pID !== qID) {
+    if (pRoot !== qRoot) {
+      // Give p and q the same root if they did not already have the same root
+      this.id[pRoot] = qRoot;
       this.numComponents--;
-      // Change all values from id[p] to id[q] iff they're not already the same
-      for (let i = 0; i < this.id.length; i++) {
-        if (this.id[i] === pID) {
-          this.id[i] = qID;
-        }
-      }
     }
   }
 
-  find(p) {
-    return this.id[p];
+  root(i) {
+    // Chase parent pointers until the root is reached
+    while (i !== this.id[i]) { i = this.id[i]; }
+    return i;
   }
 
   connected(p, q) {
-    return this.id[p] === this.id[q];
+    // Check if p and q have the same root
+    return this.root(p) === this.root(q);
   }
 
   count() {
@@ -61,5 +60,5 @@ class QuickFind {
   }
 }
 
-const qf = new QuickFind();
-qf.initialize('../../input/union-find/tinyUF.txt');
+const qu = new QuickUnion();
+qu.initialize('../../input/union-find/tinyUF.txt');
