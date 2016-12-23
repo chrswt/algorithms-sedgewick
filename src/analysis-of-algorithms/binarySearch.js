@@ -1,3 +1,9 @@
+/*
+ * BINARY SEARCH
+ *
+ * Given a sorted array and a key, find index of the key in the array
+ */
+
 const binarySearch = (sortedArray, key) => {
   let low = 0;
   let high = sortedArray.length - 1;
