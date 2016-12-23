@@ -51,7 +51,7 @@ let input = [];
 
 fs.readFile('../../input/analysis-of-algorithms/4Kints.txt', 'utf-8', (err, data) => {
   data.split('\n').forEach((int) => {
-    input.push(Number(int));
+    if (input !== '') { input.push(Number(int)); }
   });
 
   console.log(twoSum(input)); // 3
