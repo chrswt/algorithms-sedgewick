@@ -63,7 +63,7 @@ class Percolation {
       if (int !== 0 && isOpen(int - n)) { union(int, int - n); }
       if (int !== n * n - n + 1 && isOpen(int + n)) { union(int, int + n); }
     } else if (int % n === n - 1) { // Right col
-      if (isOpen(int - 1)) { union(int, int - 1); };
+      if (isOpen(int - 1)) { union(int, int - 1); }
       if (int !== n - 1 && isOpen(int - n)) { union(int, int - n); }
       if (int !== n * n - 1 && isOpen(int + n)) { union(int, int + n); }
     } else {
@@ -145,7 +145,7 @@ const percolationSim = (n) => {
 
   // Return the percentage of open sites required for percolation
   return count / (n * n);
-}
+};
 
 if (!module.parent) {
   console.log(percolationSim(500));
@@ -154,4 +154,4 @@ if (!module.parent) {
 module.exports = {
   Percolation: Percolation,
   percolationSim: percolationSim,
-}
+};
