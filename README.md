@@ -15,7 +15,13 @@ The notes were written for personal benefit and reference and were intended neit
     - dynamic connectivity, quick-find, quick-union, weighted quick-union, path compression
   - [Quick Find](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js)
   - [Quick Union](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js)
-  - [Weighted Quick Union with Path Compression](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js)
-  - [Percolation](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/percolation/percolation.js)
-  - [Percolation Stats](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/percolation/percolationStats.js)
+  - [Weighted Quick Union with Path Compression](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js) *
+  - [Percolation](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolation.md) *
+  - [Percolation Stats](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolation.md)
   - [Successor With Delete](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/interview-problems/successorWithDelete.js)
+2. Analysis of Algorithms
+  - [Chapter Notes](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.4-analysis-of-algorithms.md)
+    - mathematical models, tilde notation, two sum, three sum
+  - [Binary Search](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/binarySearch.js)
+  - [Two Sum](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/twoSum.js)
+  - [Three Sum](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/threeSum.js)
