@@ -24,4 +24,4 @@ const binarySearch = (sortedArray, key) => {
 };
 
 console.log(binarySearch([1, 2, 3, 4, 5, 6], 6)); // 5
-console.log(binarySearch([38, 88, 199, 512, 600], 4)) // -1
+console.log(binarySearch([38, 88, 199, 512, 600], 4)); // -1
