@@ -14,10 +14,10 @@ The notes were written for personal benefit and reference and were intended neit
   - [Chapter Notes](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-union-find.md)
     - dynamic connectivity, quick-find, quick-union, weighted quick-union, path compression
   - [Quick Find](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js)
-  - [Quick Union](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js)
-  - [Weighted Quick Union with Path Compression](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js) *
+  - [Quick Union](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickUnion.js)
+  - [Weighted Quick Union with Path Compression](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/weightedQuickUnion.js) *
   - [Percolation](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolation.md) *
-  - [Percolation Stats](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolation.md)
+  - [Percolation Stats](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolationStats.md)
   - [Successor With Delete](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/interview-problems/successorWithDelete.js)
 2. Analysis of Algorithms
   - [Chapter Notes](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.4-analysis-of-algorithms.md)
