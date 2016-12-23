@@ -52,6 +52,15 @@ const threeSum = (arr) => {
   }
 
   return count;
+
+  /*
+   * Note that while the above implementation is O(n^2 log n), we could also
+   * further optimize this by storing all the integers in a hash table, which
+   * would allow for O(1) retrieval and search for a corresponding triple.
+   * This would eliminate the need for binary search and therefore searching,
+   * resulting in an O(n^2) implementation.
+   */
+
 };
 
 let input = [];
