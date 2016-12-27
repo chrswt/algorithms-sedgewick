@@ -45,3 +45,4 @@ The notes were written for personal benefit and reference and were intended neit
   - [Selection Sort](./src/elementary-sorts/selectionSort.js)
   - [Insertion Sort](./src/elementary-sorts/insertionSort.js)
   - [ShellSort](./src/elementary-sorts/shellSort.js) *
+  - [Knuth Shuffle](./src/elementary-sorts/knuthShuffle.js)
