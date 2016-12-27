@@ -46,3 +46,7 @@ The notes were written for personal benefit and reference and were intended neit
   - [Insertion Sort](./src/elementary-sorts/insertionSort.js)
   - [ShellSort](./src/elementary-sorts/shellSort.js) *
   - [Knuth Shuffle](./src/elementary-sorts/knuthShuffle.js)
+  - [Intersection of 2 Sets](./src/interview-problems/intersectionOf2Sets.js)
+  - [Permutation](./src/interview-problems/permutation.js)
+  - [Dutch National Flag](./src/interview-problems/dutchNationalFlag.js)
+  
