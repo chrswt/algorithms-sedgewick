@@ -34,5 +34,5 @@ The notes were written for personal benefit and reference and were intended neit
   - [Queue](./src/bags-queues-stacks/queue.js)
   - [Queue with Linked List](./src/bags-queues-stacks/queueWithLinkedList.js)
   - [Dijkstra's Algorithm for Expression Evaluation](./src/bags-queues-stacks/dijkstrasAlgorithm.js)
-  - [Stack With 2 Queues](./interview-problems/stackWith2Queues.js)
+  - [Stack With 2 Queues](./interview-problems/queueWith2Stacks.js)
   - [Stack with Max](./interview-problems/stackWithMax.js)
