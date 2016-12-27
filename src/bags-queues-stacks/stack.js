@@ -36,6 +36,13 @@ class Stack {
     this.storage[this.num] = null;
     return item;
   }
+
+  peek() {
+    // Method that allows us to peek at the top of the stack
+    if (this.isEmpty()) { return null; }
+
+    return this.storage[this.num - 1];
+  }
 }
 
 if (!module.parent) {
