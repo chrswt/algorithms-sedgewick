@@ -89,12 +89,18 @@ class RandomizedQueue {
   }
 }
 
-let rq = new RandomizedQueue();
-rq.enqueue(1);
-rq.enqueue(2);
-rq.enqueue(3);
-rq.enqueue(4);
-console.log(rq.sample());
-console.log(rq.dequeue());
-console.log(rq.size()); // 3
-rq.iterate();
+if (!module.parent) {
+  let rq = new RandomizedQueue();
+  rq.enqueue(1);
+  rq.enqueue(2);
+  rq.enqueue(3);
+  rq.enqueue(4);
+  console.log(rq.sample());
+  console.log(rq.dequeue());
+  console.log(rq.size()); // 3
+  rq.iterate();
+}
+
+module.exports = {
+  RandomizedQueue: RandomizedQueue,
+};
