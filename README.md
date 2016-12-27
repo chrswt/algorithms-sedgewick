@@ -36,6 +36,12 @@ The notes were written for personal benefit and reference and were intended neit
   - [Dijkstra's Algorithm for Expression Evaluation](./src/bags-queues-stacks/dijkstrasAlgorithm.js)
   - [Stack With 2 Queues](./interview-problems/queueWith2Stacks.js)
   - [Stack with Max](./interview-problems/stackWithMax.js)
-  - [Deque](./notes/1.3-deque.md)
+  - [Deque](./notes/1.3-deque.md) *
   - [Randomized Queue](./notes/1.3-randomizedQueue.md)
   - [Subset Client](./notes/1.3-subset-client.md)
+4. Elementary Sorts
+  - [Chapter Notes](./notes/1.4-elementary-sorts.md)
+    - selection sort, insertion sort, shellsort
+  - [Selection Sort](./src/elementary-sorts/selectionSort.js)
+  - [Insertion Sort](./src/elementary-sorts/insertionSort.js)
+  - [ShellSort](./src/elementary-sorts/shellSort.js)
