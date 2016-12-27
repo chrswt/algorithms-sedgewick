@@ -18,6 +18,8 @@ class Stack {
   }
 
   pop() {
+    if (this.isEmpty()) { return null; }
+
     /*
      * This allows us to decrement the counter, then use it to index the array.
      * This implementation also removes reference to the deleted object.
