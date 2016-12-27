@@ -38,10 +38,16 @@ class Stack {
   }
 }
 
-let s = new Stack();
-console.log(s.isEmpty()); // true
-s.push(1);
-s.push(2);
-console.log(s.pop()); // 2
-console.log(s.size()); // 1
-console.log(s.isEmpty()); // false
+if (!module.parent) {
+  let s = new Stack();
+  console.log(s.isEmpty()); // true
+  s.push(1);
+  s.push(2);
+  console.log(s.pop()); // 2
+  console.log(s.size()); // 1
+  console.log(s.isEmpty()); // false
+}
+
+module.exports = {
+  Stack: Stack,
+};

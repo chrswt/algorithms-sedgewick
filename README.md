@@ -33,4 +33,4 @@ The notes were written for personal benefit and reference and were intended neit
   - [Stack with Linked List](./src/bags-queues-stacks/stackWithLinkedList.js)
   - [Queue](./src/bags-queues-stacks/queue.js)
   - [Queue with Linked List](./src/bags-queues-stacks/queueWithLinkedList.js)
-  
+  - [Dijkstra's Algorithm for Expression Evaluation](./src/bags-queues-stacks/dijkstrasAlgorithm.js)
