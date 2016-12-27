@@ -11,20 +11,20 @@ The notes were written for personal benefit and reference and were intended neit
 
 ## Table of Contents
 1. Case Study: Union Find
-  - [Chapter Notes](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-union-find.md)
+  - [Chapter Notes](./notes/1.5-union-find.md)
     - dynamic connectivity, quick-find, quick-union, weighted quick-union, path compression
-  - [Quick Find](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickFind.js)
-  - [Quick Union](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/quickUnion.js)
-  - [Weighted Quick Union with Path Compression](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/union-find/weightedQuickUnion.js) *
-  - [Percolation](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolation.md) *
-  - [Percolation Stats](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.5-percolationStats.md)
-  - [Successor With Delete](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/interview-problems/successorWithDelete.js)
+  - [Quick Find](./src/union-find/quickFind.js)
+  - [Quick Union](./src/union-find/quickUnion.js)
+  - [Weighted Quick Union with Path Compression](./src/union-find/weightedQuickUnion.js) *
+  - [Percolation](.//notes/1.5-percolation.md) *
+  - [Percolation Stats](./notes/1.5-percolationStats.md)
+  - [Successor With Delete](./src/interview-problems/successorWithDelete.js)
 2. Analysis of Algorithms
-  - [Chapter Notes](https://github.com/chrswt/algorithms-sedgewick/blob/master/notes/1.4-analysis-of-algorithms.md)
+  - [Chapter Notes](./notes/1.4-analysis-of-algorithms.md)
     - mathematical models, tilde notation, two sum, three sum
-  - [Binary Search](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/binarySearch.js)
-  - [Two Sum](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/twoSum.js)
-  - [Three Sum](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/threeSum.js)
+  - [Binary Search](./src/analysis-of-algorithms/binarySearch.js)
+  - [Two Sum](./src/analysis-of-algorithms/twoSum.js)
+  - [Three Sum](./src/analysis-of-algorithms/threeSum.js)
   - [Bitonic Array Search](./src/interview-problems/bitonicArraySearch.js)
 3. Bags, Stacks, and Queues
   - [Chapter Notes](./notes/1.3-bags-queues-stacks.md)
@@ -34,3 +34,5 @@ The notes were written for personal benefit and reference and were intended neit
   - [Queue](./src/bags-queues-stacks/queue.js)
   - [Queue with Linked List](./src/bags-queues-stacks/queueWithLinkedList.js)
   - [Dijkstra's Algorithm for Expression Evaluation](./src/bags-queues-stacks/dijkstrasAlgorithm.js)
+  - [Stack With 2 Queues](./interview-problems/stackWith2Queues.js)
+  - [Stack with Max](./interview-problems/stackWithMax.js)

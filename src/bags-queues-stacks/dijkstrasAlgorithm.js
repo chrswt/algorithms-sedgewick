@@ -14,7 +14,7 @@ const evaluate = (str) => {
 
   str.split(' ').forEach((char) => {
     if (char === ' ' || char === '(') {
-      //null; // Ignore whitespace and left (opening) parentheses
+      null; // Ignore whitespace and left (opening) parentheses
     } else if (char === '+' || char === '-' || char === '*'
         || char === '/' || char === 'sqrt') {
       operators.push(char); // Push all other operators into the operators stack
@@ -45,8 +45,6 @@ const evaluate = (str) => {
   });
 
   return operands.pop();
-
-
 };
 
 console.log(evaluate('( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )')); // 101
