@@ -13,11 +13,15 @@ class Stack {
   }
 
   push(item) {
-    // Use num to index the array, then increment num
+    /*
+     * Add an item to the top of the stack.
+     * Use num to index the array, then increment num.
+     */
     this.storage[this.num++] = item;
   }
 
   pop() {
+    // Remove an item from the top of the stack
     if (this.isEmpty()) { return null; }
 
     /*
