@@ -40,6 +40,8 @@ class RandomizedQueue {
   }
 
   enqueue(item) {
+    if (item === null) { return 'Operation (add item: null) not allowed!'; }
+
     // Store the item at the N'th position, then increment N
     this.storage[this.num++] = item;
   }
