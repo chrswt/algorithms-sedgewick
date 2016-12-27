@@ -27,5 +27,10 @@ The notes were written for personal benefit and reference and were intended neit
   - [Three Sum](https://github.com/chrswt/algorithms-sedgewick/blob/master/src/analysis-of-algorithms/threeSum.js)
   - [Bitonic Array Search](./src/interview-problems/bitonicArraySearch.js)
 3. Bags, Stacks, and Queues
-  - [Chapter Notes](./src/notes/1.3-bags-queues-stacks.md)
+  - [Chapter Notes](./notes/1.3-bags-queues-stacks.md)
     - bags, queues, stacks, dijkstra's algorithm, linked lists
+  - [Stack](./src/bags-queues-stacks/stack.js)
+  - [Stack with Linked List](./src/bags-queues-stacks/stackWithLinkedList.js)
+  - [Queue](./src/bags-queues-stacks/queue.js)
+  - [Queue with Linked List](./src/bags-queues-stacks/queueWithLinkedList.js)
+  

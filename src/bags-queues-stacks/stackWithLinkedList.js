@@ -1,3 +1,7 @@
+/*
+ * Simple Stack using linked list implementation
+ */
+
 // An inner class 'node' used to represent each node of the linked list
 class Node {
   constructor(val) {

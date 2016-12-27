@@ -12,6 +12,10 @@ class Stack {
     return this.num === 0;
   }
 
+  size() {
+    return this.num;
+  }
+
   push(item) {
     /*
      * Add an item to the top of the stack.
@@ -39,4 +43,5 @@ console.log(s.isEmpty()); // true
 s.push(1);
 s.push(2);
 console.log(s.pop()); // 2
+console.log(s.size()); // 1
 console.log(s.isEmpty()); // false
