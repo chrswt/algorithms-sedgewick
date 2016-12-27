@@ -1,8 +1,8 @@
 const selectionSort = (arr) => {
-  for (var i = 0; i < arr.length - 1; i++) {
+  for (let i = 0; i < arr.length - 1; i++) {
     let min = i;
 
-    for (var j = i + 1; j < arr.length; j++) {
+    for (let j = i + 1; j < arr.length; j++) {
       // Find the minimum value in the unsorted sub-array
       if (arr[j] < arr[min]) {
         min = j;
@@ -14,7 +14,7 @@ const selectionSort = (arr) => {
   }
 
   return arr;
-}
+};
 
 console.log(selectionSort([0, -5, 23, -2, 19, 3, 7]));
 // [-5, -2, 0, 3, 7, 19, 23]
