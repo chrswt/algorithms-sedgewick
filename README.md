@@ -44,4 +44,4 @@ The notes were written for personal benefit and reference and were intended neit
     - selection sort, insertion sort, shellsort
   - [Selection Sort](./src/elementary-sorts/selectionSort.js)
   - [Insertion Sort](./src/elementary-sorts/insertionSort.js)
-  - [ShellSort](./src/elementary-sorts/shellSort.js)
+  - [ShellSort](./src/elementary-sorts/shellSort.js) *
