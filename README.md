@@ -40,7 +40,7 @@ The notes were written for personal benefit and reference and were intended neit
   - [Randomized Queue](./notes/1.3-randomizedQueue.md)
   - [Subset Client](./notes/1.3-subset-client.md)
 4. Elementary Sorts
-  - [Chapter Notes](./notes/1.4-elementary-sorts.md)
+  - [Chapter Notes](./notes/2.1-elementary-sorts.md)
     - selection sort, insertion sort, shellsort
   - [Selection Sort](./src/elementary-sorts/selectionSort.js)
   - [Insertion Sort](./src/elementary-sorts/insertionSort.js)
