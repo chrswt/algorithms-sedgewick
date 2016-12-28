@@ -23,11 +23,11 @@ const merge = (arr, low, mid, high) => {
     } else if (j > high) {
       // Right half is exhausted, take from left sub-array and increment i
       arr[k] = aux[i++];
-    } else if (aux[i] < aux[j]) {
-      // Element on the left smaller than element on the right, take from left
+    } else if (aux[i] <= aux[j]) {
+      // Element on left smaller or equal to element on right, take from left
       arr[k] = aux[i++];
     } else {
-      // Element on left greater or equal to element on right, take from right
+      // Element on left greater than element on right, take from right
       arr[k] = aux[j++];
     }
   }
