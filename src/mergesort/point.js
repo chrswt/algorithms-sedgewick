@@ -26,15 +26,27 @@ class Point {
     this.scale = 41.25;
   }
 
+  /*
+   * Helper functions that scale x and y (ranging from 0 to 33,000) to fit onto
+   * an 800px by 800px canvas. modifyY inverts y to reflect the convention of
+   * graphing the y-axis starting from 0 on the bottom left.
+   */
+  modifyY(y) {
+    return 800 - (y / this.scale);
+  }
+
+  modifyX(x) {
+    return x / this.scale;
+  }
+
   draw() {
     if (typeof(document) !== 'undefined') {
       const canvas = document.getElementById('graph');
       const ctx = canvas.getContext('2d');
       const radius = 1;
 
-      // Scaled to fit 0 - 33,000 into 800px by 800px canvas
-      const centerX = this.x / this.scale;
-      const centerY = this.y / this.scale;
+      const centerX = this.modifyX(this.x);
+      const centerY = this.modifyY(this.y);
 
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
@@ -51,10 +63,10 @@ class Point {
       const canvas = document.getElementById('graph');
       const ctx    = canvas.getContext('2d');
 
-      const centerX = this.x / this.scale;
-      const centerY = this.y / this.scale;
-      const destX   = point.x / this.scale;
-      const destY   = point.y / this.scale;
+      const centerX = this.modifyX(this.x);
+      const centerY = this.modifyY(this.y);
+      const destX   = this.modifyX(point.x);
+      const destY   = this.modifyY(point.y);
 
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
@@ -66,9 +78,13 @@ class Point {
   toString() {
     return [this.x, this.y];
   }
+
+  slopeTo(point) {
+
+  }
 }
 
-const p = new Point(1000, 1000);
+const p = new Point(20000, 20000);
 p.draw();
 const q = new Point(18000, 17100);
 q.draw();
