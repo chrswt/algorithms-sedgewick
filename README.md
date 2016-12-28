@@ -49,4 +49,9 @@ The notes were written for personal benefit and reference and were intended neit
   - [Intersection of 2 Sets](./src/interview-problems/intersectionOf2Sets.js) *
   - [Permutation](./src/interview-problems/permutation.js)
   - [Dutch National Flag](./src/interview-problems/dutchNationalFlag.js) *
+5. Mergesort
+  - [Chapter Notes](./notes/2.2-mergesort.md)
+    - top-down mergesort, bottom-up mergesort
+  - [Top-down Mergesort](./src/mergesort/mergesort.js) *
+  - [Bottom-up Mergesort](./src/mergesort/mergesortBU.js)
   
