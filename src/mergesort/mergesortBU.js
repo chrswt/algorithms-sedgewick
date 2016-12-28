@@ -25,7 +25,7 @@ const mergesortBU = (arr) => {
   return arr;
 };
 
-fs.readFile('../../input/merge-sort/tiny.txt', 'utf-8', (err, data) => {
+fs.readFile('../../input/mergesort/tiny.txt', 'utf-8', (err, data) => {
   let a = [];
 
   data.split('\n').join('').split(' ').forEach((e) => {
@@ -35,7 +35,7 @@ fs.readFile('../../input/merge-sort/tiny.txt', 'utf-8', (err, data) => {
   console.log(mergesortBU(a)); // ['A', 'E', 'E', 'L', 'M', 'N', 'O', ..., 'X']
 });
 
-fs.readFile('../../input/merge-sort/words3.txt', 'utf-8', (err, data) => {
+fs.readFile('../../input/mergesort/words3.txt', 'utf-8', (err, data) => {
   let b = [];
 
   data.split('\n').join('').split(' ').forEach((e) => {

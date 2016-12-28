@@ -79,14 +79,45 @@ class Point {
     return [this.x, this.y];
   }
 
-  slopeTo(point) {
+  compareTo(point) {
+    // Compares points by their y-coords, breaking ties by their x-coords
+    return this.y < point.y ? -1 :
+      this.y > point.y ? 1 :
+      this.x < point.x ? -1 :
+      this.x > point.x ? 1 : 0;
+  }
 
+  slopeTo(point) {
+    // Returns the slope of the invoking point and the argument point
+    if (this.x === point.x) {
+      // Treat the slope of a degenerate line segment as negative infinity
+      if (this.y === point.y) { return Number.NEGATIVE_INFINITY; }
+
+      // Treat the slope of a vertical line segment as positive infinity
+      return Number.POSITIVE_INFINITY;
+    }
+
+    // Treat horizontal line segments as having a slope of positive zero
+    if (this.y === point.y) { return 0; }
+
+    return ((point.y - this.y) / (point.x - this.x));
   }
 }
 
-const p = new Point(20000, 20000);
-p.draw();
-const q = new Point(18000, 17100);
-q.draw();
-p.drawTo(q);
-console.log(q.toString());
+//const p = new Point(18000, 30000);
+//p.draw();
+//const q = new Point(18000, 17100);
+//q.draw();
+//p.drawTo(q);
+//console.log(q.toString());
+//console.log(p.slopeTo(q));
+
+if (typeof(document) === 'undefined') { // Only use fs module if not browser
+  const fs = require('fs');
+
+  fs.readFile('../../input/mergesort/rs1423.txt', 'utf-8', (err, data) => {
+    data.split('\n').forEach((line, lineNum) => {
+      // Do something with the data when required
+    });
+  });
+}
