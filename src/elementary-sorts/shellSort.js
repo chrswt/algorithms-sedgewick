@@ -35,7 +35,13 @@ const shellSort = (arr) => {
   return arr;
 };
 
-console.log(shellSort([0, -5, 23, -2, 19, 3, 7]));
+if (!module.parent) {
+  console.log(shellSort([0, -5, 23, -2, 19, 3, 7]));
 // [-5, -2, 0, 3, 7, 19, 23]
-console.log(shellSort(['d', 'aa', 'ba', 'ab', 'da', 'a']));
+  console.log(shellSort(['d', 'aa', 'ba', 'ab', 'da', 'a']));
 // ['a', 'aa', 'ab', 'ba', 'd', 'da']
+}
+
+module.exports = {
+  shellSort: shellSort,
+};
