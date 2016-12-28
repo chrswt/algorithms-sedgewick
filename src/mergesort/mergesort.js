@@ -52,22 +52,29 @@ const mergesort = (arr, low=0, high=arr.length - 1) => {
   return arr;
 };
 
-fs.readFile('../../input/merge-sort/tiny.txt', 'utf-8', (err, data) => {
-  let a = [];
+if (!module.parent) {
+  fs.readFile('../../input/merge-sort/tiny.txt', 'utf-8', (err, data) => {
+    let a = [];
 
-  data.split('\n').join('').split(' ').forEach((e) => {
-    a.push(e);
+    data.split('\n').join('').split(' ').forEach((e) => {
+      a.push(e);
+    });
+
+    console.log(mergesort(a)); // ['A', 'E', 'E', 'L', 'M', 'N', 'O', ..., 'X']
   });
 
-  console.log(mergesort(a)); // ['A', 'E', 'E', 'L', 'M', 'N', 'O', ..., 'X']
-});
+  fs.readFile('../../input/merge-sort/words3.txt', 'utf-8', (err, data) => {
+    let b = [];
 
-fs.readFile('../../input/merge-sort/words3.txt', 'utf-8', (err, data) => {
-  let b = [];
+    data.split('\n').join('').split(' ').forEach((e) => {
+      b.push(e);
+    });
 
-  data.split('\n').join('').split(' ').forEach((e) => {
-    b.push(e);
+    console.log(mergesort(b));
   });
+}
 
-  console.log(mergesort(b));
-});
+module.exports = {
+  merge: merge,
+  mergesort: mergesort,
+};
