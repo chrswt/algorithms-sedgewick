@@ -48,5 +48,5 @@ The notes were written for personal benefit and reference and were intended neit
   - [Knuth Shuffle](./src/elementary-sorts/knuthShuffle.js)
   - [Intersection of 2 Sets](./src/interview-problems/intersectionOf2Sets.js) *
   - [Permutation](./src/interview-problems/permutation.js)
-  - [Dutch National Flag](./src/interview-problems/dutchNationalFlag.js)
+  - [Dutch National Flag](./src/interview-problems/dutchNationalFlag.js) *
   
