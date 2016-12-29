@@ -73,91 +73,90 @@ class FastCollinearPoints {
 
   fast() {
     let points = this.points;
+    let segs = [];
 
     for (let i = 0; i < points.length; i++) {
-      let p = points[i];
-      let slopes = [];
-      let slopesRef = {};
-      let lineSeg = [];
+      let p      = points[i];
+      let slopes = {};
 
-      for (let j = i+1; j < points.length; j++) {
+      for (let j = 0; j < points.length; j++) {
+        if (i === j) { continue; }
         let q = points[j];
 
         // Find all the slopes that other points make with p
         let slope = p.slopeTo(q);
-        slopes.push(slope);
-        if (slopesRef[slope] === undefined) {
-          slopesRef[slope] = [q];
+        if (slopes[slope] === undefined) {
+          slopes[slope] = [p, q];
         } else {
-          slopesRef[slope].push(q);
+          slopes[slope].push(q);
         }
       }
 
-      // Sort the slopes
-      slopes = mergesort(slopes);
+      Object.keys(slopes).forEach((slope) => {
+        // Retrieve all points with the same relative slope to p
+        let points = slopes[slope];
 
-      /*
-       * Check if any 3 (or more) adjacent points have equal slopes with
-       * respect to p, which implies that the points and p are collinear.
-       */
-      let collinearSlopes = [];
-
-      if (slopes !== undefined) {
-        for (let k = 2; k < slopes.length; k++) {
-          if (slopes[k] === slopes[k-1] && slopes[k] === slopes[k-2]
-            && (slopes[k] !== slopes[k+1] || slopes[k+1] === undefined)) {
-            collinearSlopes.push(slopes[k]);
-          }
-        }
-      }
-
-      // Check the points lying on collinear slope
-      if (collinearSlopes.length > 0) {
-        collinearSlopes.forEach((slope) => {
-          let collinearPoints = slopesRef[slope];
+        // Check for the furthest points on a segment if there are at least 4
+        if (points.length >= 4) {
           let maxDistance = 0;
-          let candidateSeg = null;
-          console.log(collinearPoints);
+          let edgePoints  = null;
 
-          // Find the largest euclidean distance between the points
-          for (let a = 0; a < collinearPoints.length - 1; a++) {
-            for (let b = 0; b < collinearPoints.length; b++) {
-              let distance = collinearPoints[a].distance(collinearPoints[b]);
+          // Find the two points with the greatest euclidean distance
+          for (let a = 0; a < points.length - 1; a++) {
+            for (let b = a + 1; b < points.length; b++) {
+              let distance = points[a].distance(points[b]);
               if (distance > maxDistance) {
                 maxDistance = distance;
-                candidateSeg = [collinearPoints[a], collinearPoints[b]];
+                edgePoints  = [points[a], points[b], distance, Number(slope)];
               }
             }
           }
 
-          lineSeg.push(candidateSeg);
-        });
-      }
-
-      if (lineSeg.length > 0) {
-        lineSeg.forEach((seg) => {
-          let newLine = new LineSegment(seg[0], seg[1]);
+          // Update all sub-segments with larger segments and ensure no duplicates
           let exists = false;
+          let replacementIndex;
+          let replacement;
 
-          // Check for duplicate segment
-          this.lineSegments.forEach((segment) => {
-            if ((newLine.p.x === segment.p.x && newLine.p.y === segment.p.y
-              && newLine.q.x === segment.q.x && newLine.q.y === segment.q.y)
-              || (newLine.p.x === segment.q.x && newLine.p.y === segment.q.y
-              && newLine.q.x === segment.p.x && newLine.q.y === segment.p.y)) {
-              //console.log(newLine);
-              exists = true;
+          for (let c = 0; c < segs.length; c++) {
+            let seg = segs[c];
+
+            if (seg[3] === edgePoints[3]) {
+              if ((seg[0].x === edgePoints[0].x && seg[0].y === edgePoints[0].y)
+                || (seg[1].x === edgePoints[1].x && seg[1].y === edgePoints[1].y)
+                || (seg[0].x === edgePoints[1].x && seg[0].y === edgePoints[1].y)
+                || (seg[1].x === edgePoints[0].x && seg[1].y === edgePoints[0].y)) {
+
+                // Found something that belongs to the same line segment
+                exists = true;
+
+                if (edgePoints[2] > seg[2]) {
+                  // Replace only if the euclidean distance is bigger
+                  replacementIndex = c;
+                  replacement = edgePoints;
+                }
+              }
             }
-          });
+          }
+
+          // Perform replacement outside of the iteration loop
+          if (replacementIndex && replacement) {
+            segs[replacementIndex] = replacement;
+          }
 
           if (!exists) {
-            this.lineSegments.push(newLine);
-            newLine.draw();
-            this.number++;
+            // Push into line segments if we find a novel segment
+            segs.push(edgePoints);
           }
-        });
-      }
+        }
+      });
     }
+
+    segs.forEach((seg) => {
+      let newLine = new LineSegment(seg[0], seg[1]);
+      this.lineSegments.push(newLine);
+      newLine.draw();
+      this.number++;
+    });
   }
 
   numberOfSegments() {
@@ -172,7 +171,7 @@ class FastCollinearPoints {
 }
 
 if (typeof(document) === 'undefined' && !module.parent) {
-  const data = fs.readFileSync('../../input/mergesort/input9.txt', 'utf-8');
+  const data = fs.readFileSync('../../input/mergesort/input1000.txt', 'utf-8');
   const fcp = new FastCollinearPoints(data);
   fcp.fast();
   fcp.printLineSegments();
