@@ -117,16 +117,8 @@ class Point {
   }
 }
 
-if (typeof(document) === 'undefined' && !module.parent) { // Only use fs module if not browser
-  const fs = require('fs');
-
-  fs.readFile('../../input/mergesort/rs1423.txt', 'utf-8', (err, data) => {
-    data.split('\n').forEach((line, lineNum) => {
-      // Do something with the data when required
-    });
-  });
+if (typeof(document) === 'undefined') {
+  module.exports = {
+    Point: Point,
+  };
 }
-
-module.exports = {
-  Point: Point,
-};

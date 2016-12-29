@@ -9,6 +9,10 @@
   <input type="file" id="file-input" />
   <h3>Contents of the file:</h3>
   <pre id="file-content"></pre>
+  <canvas id="graph" width="800" height="800"></canvas>
+  <script src="./point.js"></script>
+  <script src="./lineSegment.js"></script>
+  <script src="./bruteCollinearPoints.js"></script>
   <script>
     const readFile = (e) => {
       let file = e.target.files[0];
@@ -17,24 +21,20 @@
 
       const reader = new FileReader();
       reader.onload = (e) => {
+        // Clear the canvas of previous plots
+        const canvas = document.getElementById('graph');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         const contents = e.target.result;
-
-        contents.split('\n').forEach((line, lineNum) => {
-          if (lineNum !== 0 && line !== '') {
-            let points = line.split(' ');
-            let p = new Point(points[0], points[1]);
-            p.draw();
-          }
-        });
-      }
-
+        const bcp = new BruteCollinearPoints(contents);
+        bcp.brute();
+      };
       reader.readAsText(file);
     };
 
     document.getElementById('file-input')
       .addEventListener('change', readFile, false);
   </script>
-  <canvas id="graph" width="800" height="800"></canvas>
-  <script src="./point.js"></script>
 </body>
 </html>

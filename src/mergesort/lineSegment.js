@@ -14,7 +14,6 @@
  * http://coursera.cs.princeton.edu/algs4/assignments/collinear.html
  */
 
-let Point;
 if (typeof(document) === 'undefined') { Point = require('./Point').Point; }
 
 class LineSegment {
@@ -34,13 +33,15 @@ class LineSegment {
   }
 }
 
-if (!module.parent) {
-  let p = new Point(100, 100);
-  let q = new Point(300, 300);
-  let k = new LineSegment(p, q);
-  console.log(k.toString());
-}
+if (typeof(document) === 'undefined') {
+  if (!module.parent) {
+    let p = new Point(100, 100);
+    let q = new Point(300, 300);
+    let k = new LineSegment(p, q);
+    console.log(k.toString());
+  }
 
-module.exports = {
-  LineSegment: LineSegment,
-};
+  module.exports = {
+    LineSegment: LineSegment,
+  };
+}
