@@ -102,17 +102,22 @@ class Point {
 
     return ((point.y - this.y) / (point.x - this.x));
   }
+
+  slopeOrder(pointA, pointB) {
+    /* Returns -1 if pointA < pointB, 1 if pointA > pointB, and 0 if they are
+     * equal. pointA is greater than pointB if the slope made to pointA by
+     * the invoking point is greater than the slope made to pointB by the
+     * invoking point.
+     */
+    const slopeA = this.slopeTo(pointA);
+    const slopeB = this.slopeTo(pointB);
+
+    return slopeA < slopeB ? -1 :
+      slopeA > slopeB ? 1 : 0;
+  }
 }
 
-//const p = new Point(18000, 30000);
-//p.draw();
-//const q = new Point(18000, 17100);
-//q.draw();
-//p.drawTo(q);
-//console.log(q.toString());
-//console.log(p.slopeTo(q));
-
-if (typeof(document) === 'undefined') { // Only use fs module if not browser
+if (typeof(document) === 'undefined' && !module.parent) { // Only use fs module if not browser
   const fs = require('fs');
 
   fs.readFile('../../input/mergesort/rs1423.txt', 'utf-8', (err, data) => {
@@ -121,3 +126,7 @@ if (typeof(document) === 'undefined') { // Only use fs module if not browser
     });
   });
 }
+
+module.exports = {
+  Point: Point,
+};
