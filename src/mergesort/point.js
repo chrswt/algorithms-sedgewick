@@ -115,6 +115,12 @@ class Point {
     return slopeA < slopeB ? -1 :
       slopeA > slopeB ? 1 : 0;
   }
+
+  distance(point) {
+    // Calculate the euclidean distance between this and that point
+    return Math.sqrt(Math.pow(this.x-point.x, 2) + Math.pow(this.y-point.y, 2));
+    //root of (q1 - p1)^2 + (q2 - p2)^2
+  }
 }
 
 if (typeof(document) === 'undefined') {

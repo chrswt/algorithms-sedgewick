@@ -61,28 +61,81 @@ class BruteCollinearPoints {
 
   brute() {
     let points = this.points;
+    let edgePoints = [];
 
-    for (let i = 0; i < points.length - 3; i++) {
-      for (let j = i + 1; j < points.length - 2; j++) {
-        for (let k = j + 1; k < points.length - 1; k++) {
-          for (let l = k + 1; l < points.length; l++) {
-            if (points[i].slopeTo(points[j]) === points[i].slopeTo(points[k])
-              && points[i].slopeTo(points[k]) === points[i].slopeTo(points[l])) {
-              /*
-               * The three slopes between p and q, p and r, p and s are all
-               * equal, therefore p, q, r, and s are collinear. Create a line
-               * segment between p and r.
-               */
-              console.log(i, j, k, l);
-              let newLine = new LineSegment(points[i], points[l]);
-              this.lineSegments.push(newLine);
-              newLine.draw();
-              this.number++;
+    for (let i = 0; i < points.length - 2; i++) {
+      let p = points[i];
+
+      for (let j = i + 1; j < points.length - 1; j++) {
+        // Check all possible slopes between point p and all other points
+        let q = points[j];
+        let slope = p.slopeTo(q);
+        let candidates = [p, q];
+
+        for (let k = 0; k < points.length; k++) {
+          // Ignore points that reference p and q
+          if (k === i || k === j) { continue; }
+          let r = points[k];
+
+          if (p.slopeTo(r) === slope) {
+            // Find all points that lie on the same slope relative to p
+            candidates.push(r);
+          }
+        }
+
+        if (candidates.length >= 4) {
+          // Check if line segment contains at least 4 points
+          let maxDistance = 0;
+          let maxPoints;
+
+          for (let a = 0; a < candidates.length - 1; a++) {
+            for (let b = a + 1; b < candidates.length; b++) {
+              if (candidates[a].distance(candidates[b]) > maxDistance) {
+                // Find the furthest 2 points that comprise this line segment
+                maxDistance = candidates[a].distance(candidates[b]);
+                maxPoints = [
+                  [candidates[a].x, candidates[a].y],
+                  [candidates[b].x, candidates[b].y]
+                ];
+              }
             }
+          }
+
+          let exists = false;
+          for (let c = 0; c < edgePoints.length; c++) {
+            // Check if line segment has already been recorded
+            let x1 = edgePoints[c][0][0];
+            let y1 = edgePoints[c][0][1];
+            let x2 = edgePoints[c][1][0];
+            let y2 = edgePoints[c][1][1];
+
+            if ((x1 === maxPoints[0][0] && y1 === maxPoints[0][1]
+              && x2 === maxPoints[1][0] && y2 === maxPoints[1][1])
+              || (x1 === maxPoints[1][0] && y1 === maxPoints[1][1])
+              && x2 === maxPoints[0][0] && y2 === maxPoints[0][1]) {
+              // This line segment has already been recorded
+              exists = true;
+            }
+          }
+          if (!exists) {
+            // Record new line segment
+            edgePoints.push([
+              [maxPoints[0][0], maxPoints[0][1]],
+              [maxPoints[1][0], maxPoints[1][1]]
+            ]);
           }
         }
       }
     }
+
+    edgePoints.forEach((point) => {
+      let p = new Point(point[0][0], point[0][1]);
+      let q = new Point(point[1][0], point[1][1]);
+      let newLine = new LineSegment(p, q);
+      this.lineSegments.push(newLine);
+      newLine.draw();
+      this.number++;
+    });
   }
 
   numberOfSegments() {
@@ -97,7 +150,7 @@ class BruteCollinearPoints {
 }
 
 if (typeof(document) === 'undefined' && !module.parent) {
-  const data = fs.readFileSync('../../input/mergesort/rs1423.txt', 'utf-8');
+  const data = fs.readFileSync('../../input/mergesort/input8.txt', 'utf-8');
   const bcp = new BruteCollinearPoints(data);
   bcp.brute();
   bcp.printLineSegments();

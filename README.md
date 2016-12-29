@@ -54,4 +54,9 @@ The notes were written for personal benefit and reference and were intended neit
     - top-down mergesort, bottom-up mergesort
   - [Top-down Mergesort](./src/mergesort/mergesort.js) *
   - [Bottom-up Mergesort](./src/mergesort/mergesortBU.js)
+  - [Point Data Type](./src/mergesort/point.js)
+  - [Line Segment Data Type](./src/mergesort/lineSegment.js)
+  - [Brute Collinear Points](./src/mergesort/bruteCollinearPoints.js)
+  
+## Special Instructions
   
