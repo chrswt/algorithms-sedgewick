@@ -34,7 +34,13 @@ class LineSegment {
   }
 }
 
-let p = new Point(100, 100);
-let q = new Point(300, 300);
-let k = new LineSegment(p, q);
-console.log(k.toString());
+if (!module.parent) {
+  let p = new Point(100, 100);
+  let q = new Point(300, 300);
+  let k = new LineSegment(p, q);
+  console.log(k.toString());
+}
+
+module.exports = {
+  LineSegment: LineSegment,
+};
