@@ -12,7 +12,8 @@
   <canvas id="graph" width="800" height="800"></canvas>
   <script src="./point.js"></script>
   <script src="./lineSegment.js"></script>
-  <script src="./bruteCollinearPoints.js"></script>
+  <script src="./fastCollinearPoints.js"></script>
+  <script src="./mergesort.js"></script>
   <script>
     const readFile = (e) => {
       let file = e.target.files[0];
@@ -27,8 +28,8 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const contents = e.target.result;
-        const bcp = new BruteCollinearPoints(contents);
-        bcp.brute();
+        const fcp = new FastCollinearPoints(contents);
+        fcp.fast();
       };
       reader.readAsText(file);
     };

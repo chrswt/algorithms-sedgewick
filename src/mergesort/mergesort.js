@@ -3,7 +3,7 @@
  * (includes testing if two sub-arrays are already in order)
  */
 
-const fs = require('fs');
+if (typeof(document) === undefined) { fs = require('fs'); }
 
 const merge = (arr, low, mid, high) => {
   // Copy arr[low..high] into auxiliary array, aux[low..high]
@@ -52,29 +52,31 @@ const mergesort = (arr, low=0, high=arr.length - 1) => {
   return arr;
 };
 
-if (!module.parent) {
-  fs.readFile('../../input/mergesort/tiny.txt', 'utf-8', (err, data) => {
-    let a = [];
+if (typeof(document) === 'undefined') {
+  if (!module.parent) {
+    fs.readFile('../../input/mergesort/tiny.txt', 'utf-8', (err, data) => {
+      let a = [];
 
-    data.split('\n').join('').split(' ').forEach((e) => {
-      a.push(e);
+      data.split('\n').join('').split(' ').forEach((e) => {
+        a.push(e);
+      });
+
+      console.log(mergesort(a)); // ['A', 'E', 'E', 'L', 'M', 'N', 'O', ..., 'X']
     });
 
-    console.log(mergesort(a)); // ['A', 'E', 'E', 'L', 'M', 'N', 'O', ..., 'X']
-  });
+    fs.readFile('../../input/mergesort/words3.txt', 'utf-8', (err, data) => {
+      let b = [];
 
-  fs.readFile('../../input/mergesort/words3.txt', 'utf-8', (err, data) => {
-    let b = [];
+      data.split('\n').join('').split(' ').forEach((e) => {
+        b.push(e);
+      });
 
-    data.split('\n').join('').split(' ').forEach((e) => {
-      b.push(e);
+      console.log(mergesort(b));
     });
+  }
 
-    console.log(mergesort(b));
-  });
+  module.exports = {
+    merge: merge,
+    mergesort: mergesort,
+  };
 }
-
-module.exports = {
-  merge: merge,
-  mergesort: mergesort,
-};

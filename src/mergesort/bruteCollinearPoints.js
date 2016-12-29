@@ -150,8 +150,9 @@ class BruteCollinearPoints {
 }
 
 if (typeof(document) === 'undefined' && !module.parent) {
-  const data = fs.readFileSync('../../input/mergesort/input8.txt', 'utf-8');
+  const data = fs.readFileSync('../../input/mergesort/input100.txt', 'utf-8');
   const bcp = new BruteCollinearPoints(data);
   bcp.brute();
   bcp.printLineSegments();
+  console.log(bcp.numberOfSegments());
 }
