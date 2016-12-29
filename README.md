@@ -57,12 +57,13 @@ The notes were written for personal benefit and reference and were intended neit
   - [Point Data Type](./src/mergesort/point.js)
   - [Line Segment Data Type](./src/mergesort/lineSegment.js)
   - [Brute Collinear Points](./src/mergesort/bruteCollinearPoints.js)
-  - [Fast Collinear Points](./src/notes/2.2-fastCollinearPoints.md) *
+  - [Fast Collinear Points](./notes/2.2-fastCollinearPoints.md) *
+  - [Merging with Smaller Auxiliary Array](src/interview-problems/smallerAuxMerge.js)
+  - [Counting Inversions](src/interview-problems/countInversions.js)
+  - [Shuffling a Linked List](src/interview-problems/shuffleLinkedList.js)
   
 ## Special Instructions
 To use the graph application for the collinear points pattern recognition solver, open `/src/mergesort/graph.html`
 and select a file from the `/input/mergesort` folder. This will plot the points and collinear points as such:  
-
-
 ![Collinear Points Grapher](./src/mergesort/graph-grid.png)
   
