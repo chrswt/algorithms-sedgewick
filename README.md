@@ -59,7 +59,7 @@ The notes were written for personal benefit and reference and were intended neit
   - [Brute Collinear Points](./src/mergesort/bruteCollinearPoints.js)
   - [Fast Collinear Points](./notes/2.2-fastCollinearPoints.md) *
   - [Merging with Smaller Auxiliary Array](src/interview-problems/smallerAuxMerge.js)
-  - [Counting Inversions](src/interview-problems/countInversions.js)
+  - [Counting Inversions](src/interview-problems/countInversions.js) **
   - [Shuffling a Linked List](src/interview-problems/shuffleLinkedList.js)
   
 ## Special Instructions
