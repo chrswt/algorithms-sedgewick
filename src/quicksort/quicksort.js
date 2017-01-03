@@ -76,7 +76,15 @@ const quicksort = (arr, low=0, high=arr.length-1) => {
   return arr;
 };
 
-fs.readFile('../../input/mergesort/tiny.txt', 'utf-8', (err, data) => {
-  let sorted = quicksort(data.split('\n').join('').split(' '));
-  console.log(sorted); // ['A', 'E', 'E', ..., 'X']
-});
+if (!module.parent) {
+  fs.readFile('../../input/mergesort/tiny.txt', 'utf-8', (err, data) => {
+    let sorted = quicksort(data.split('\n').join('').split(' '));
+    console.log(sorted); // ['A', 'E', 'E', ..., 'X']
+  });
+}
+
+module.exports = {
+  partition: partition,
+  shuffle: shuffle,
+  quicksort: quicksort,
+};
