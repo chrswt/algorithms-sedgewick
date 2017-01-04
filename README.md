@@ -66,6 +66,9 @@ The notes were written for personal benefit and reference and were intended neit
   - [Quicksort](./src/quicksort/quicksort.js)
   - [Quickselect](./src/quicksort/quickselect.js)
   - [3-way Partitioning](./src/quicksort/quicksort3way.js)
+  - [Nuts and Bolts](./src/interview-problems/nutsAndBolts.js)
+  - []()
+  - []()
   
 ## Special Instructions
 To use the graph application for the collinear points pattern recognition solver, open `/src/mergesort/graph.html`
