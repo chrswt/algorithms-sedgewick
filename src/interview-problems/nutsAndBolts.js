@@ -23,12 +23,6 @@ class NutsAndBolts {
 
     this.nuts = shuffle(this.nuts);
     this.bolts = shuffle(this.bolts);
-
-    //this.nuts = [2,3,4,0,1];
-    //this.bolts = [2,4,1,0,3];/**/
-
-    console.log('NUTS', this.nuts);
-    console.log('BOLTS', this.bolts);
   }
 
   // Compare a nut with a bolt, returning 1 if nut > bolt
@@ -40,66 +34,53 @@ class NutsAndBolts {
 
   // Partition nut on ref bolt or bolt on ref nut
   partition(arr, low, high, ref) {
-    console.log('Calling partition on', arr, low, high, 'checking against', ref);
-    // Setting at low-1 because we do want to check low against ref
-    let i = low - 1;
-    let j = high + 1;
+    let i = low;
+    let j = high;
     let p = null;
 
     while (true) {
       // Increment i as long as it is less than the ref
-      while (this.compare(arr[++i], ref) <= 0) {
-
+      while (this.compare(arr[i], ref) <= 0) {
         if (i === high) break;
-        console.log('i is', i, 'arr[i] is', arr[i]);
+        // If we find the perfect nut/bolt, take note of it
         if (arr[i] === ref) {
-          console.log('changing p to i', i);
           p = i;
           break;
-
         }
-
+        i++;
       }
 
       // Decrement j as long as it is greater than the ref
-      while (this.compare(arr[--j], ref) >= 0) {
+      while (this.compare(arr[j], ref) >= 0) {
         if (j === low) break;
         if (arr[j] === ref) {
-          console.log('changing p to j', j);
+          // If we find the perfect nut/bolt, take note of it
           p = j;
           break;
         }
-
+        j--;
       }
 
       // Check if the pointers cross
-      if (i >= j) {
-        //j = i;
+      if (i >= j) break;
 
-        //j++;
-        break;
-      }
-
-      // Swap when we find two elements that violate the invariant
-      console.log('swap', arr[i], arr[j]);
-      console.log('pre-swap p', p);
+      /*
+       * Swap when we find two elements that violate the invariant. But first,
+       * ensure that we update the pointer to the perfect fit so that we can
+       * ensure that the array is properly partitioned.
+       */
       if (p === j) p = i;
       else if (p === i) p = j;
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 
-    // Swap j and low
-    console.log('swap j and p', j, p);
-    //[arr[j], arr[p]] = [arr[p], arr[j]];
+    // Swap the found match with the last pointer at j to maintain the invariant
+    [arr[j], arr[p]] = [arr[p], arr[j]];
 
-    console.log('arr has been modified to', arr);
-    console.log('this.nuts has been modified to', this.nuts);
-    console.log('J VALUE', j);
-    return j;
+    return p;
   }
 
   match(nuts=this.nuts, bolts=this.bolts, low=0, high=nuts.length-1) {
-    console.log('recursively calling match on', nuts, bolts, low, high);
     if (low >= high) return;
 
     let pivot = this.partition(this.nuts, low, high, this.bolts[low]);
@@ -109,11 +90,9 @@ class NutsAndBolts {
     this.match(this.nuts, this.bolts, low, pivot-1);
     this.match(this.nuts, this.bolts, pivot+1, high);
 
-    console.log('Nuts And Bolts', nuts, bolts);
+    return [nuts, bolts];
   }
 }
 
-let nb = new NutsAndBolts(5);
-//console.log(nb);
-//console.log(nb.partition([5,2,3,1,4], 0, 4, 1));
-nb.match();
+let nb = new NutsAndBolts(10);
+console.log(nb.match());
