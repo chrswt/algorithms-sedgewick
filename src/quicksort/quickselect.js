@@ -1,6 +1,7 @@
 /*
  * Quick-select implementation. This algorithm rearranges the array so that
- * a[k] contains the kth smallest key.
+ * a[k] contains the kth smallest key, e.g. k = 0 returns the minimum and
+ * k = a.length - 1 returns the maximum.
  */
 
 const partition = require('./quicksort').partition;
