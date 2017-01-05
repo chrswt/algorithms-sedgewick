@@ -45,7 +45,7 @@ The notes were written for personal benefit and reference and were intended neit
   - [Selection Sort](./src/elementary-sorts/selectionSort.js)
   - [Insertion Sort](./src/elementary-sorts/insertionSort.js)
   - [ShellSort](./src/elementary-sorts/shellSort.js) *
-  - [Knuth Shuffle](./src/elementary-sorts/knuthShuffle.js)
+  - [Knuth Shuffle](./src/elementary-sorts/knuthShuffle.js) 
   - [Intersection of 2 Sets](./src/interview-problems/intersectionOf2Sets.js) *
   - [Permutation](./src/interview-problems/permutation.js)
   - [Dutch National Flag](./src/interview-problems/dutchNationalFlag.js) *
@@ -67,11 +67,13 @@ The notes were written for personal benefit and reference and were intended neit
   - [Quickselect](./src/quicksort/quickselect.js)
   - [3-way Partitioning](./src/quicksort/quicksort3way.js)
   - [Nuts and Bolts](./src/interview-problems/nutsAndBolts.js)
-  - [Selection From Two Sorted Arrays](./src/interview-problems/selectFromTwo.js)
+  - [Selection From Two Sorted Arrays](./src/interview-problems/selectFromTwo.js) *
   - [Decimal Dominants](./src/interview-problems/decimalDominants.js)
+7. Priority Queues
+  - [Chapter Notes](./notes/2.4-priority-queues.md)
+    - binary heaps, priority queues, multi-way heaps, index priority queues, heapsort
   
 ## Special Instructions
 To use the graph application for the collinear points pattern recognition solver, open `/src/mergesort/graph.html`
 and select a file from the `/input/mergesort` folder. This will plot the points and collinear points as such:  
 ![Collinear Points Grapher](./src/mergesort/graph-grid.png)
-  
