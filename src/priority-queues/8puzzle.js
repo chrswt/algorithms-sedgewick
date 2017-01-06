@@ -333,7 +333,7 @@ class Board {
   }
 
   // String representation of the board
-  toString() {
+  string() {
     console.log(this.n);
     
     for (let i = 0; i < this.n; i++) {
@@ -352,7 +352,7 @@ if (!module.parent) {
   let b = new Board();
   b.init('../../input/8puzzle/puzzle3x3-15.txt');
   // console.log(b.hamming());
-  b.toString();
+  b.string();
   let neigh = b.neighbors();
   console.log(neigh);
   let c = b.twin();

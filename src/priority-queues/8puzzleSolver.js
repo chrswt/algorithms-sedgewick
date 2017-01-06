@@ -101,7 +101,7 @@ class SearchNode {
     this.board = Board;
     this.moves = numMoves;
     this.previous = previous;
-    this.priority = this.board.hamming() + this.moves;
+    this.priority = this.board.manhattan() + this.moves;
   }
 }
 
@@ -128,14 +128,6 @@ class Solver {
       this.solve();
       this.solveTwin();
     }
-
-    if (this.solved) {
-      console.log('Solved board', this.finalSearchNode);
-    } else {
-      console.log('Unsolvable board');
-    }
-
-    console.log('FINAL!', this.finalSearchNode);
   }
 
   // Is the initial board solvable?
@@ -151,7 +143,24 @@ class Solver {
 
   // Sequence of boards in a shortest solution, null if unsolvable
   solution() {
-    return this.finalSearchNode; // TODO
+    if (!this.isSolvable()) return null;
+
+    let sol = this.finalSearchNode;
+    let path = [sol];
+
+    // Traverse backwards through the known solution and store it
+    while (sol.previous !== null) {
+      path.push(sol.previous);
+      sol = sol.previous;
+    }
+
+    // Traverse backwards through the path and print out the solution
+    console.log(`Minimum number of moves = ${this.finalSearchNode.moves}`);
+    for (let i = path.length - 1; i >= 0; i--) {
+      console.log();
+      console.log(`Move #${path[i].moves}`);
+      path[i].board.string();
+    }
   }
 
   solve() {
@@ -163,7 +172,6 @@ class Solver {
       this.solved = true;
       this.solvable = true;
       this.finalSearchNode = current;
-      return;
     } else {
       // Otherwise generate all the neighboring nodes and insert them into PQ
       let neighboards = current.board.neighbors();
@@ -185,7 +193,6 @@ class Solver {
     // Check if the removed search node is the goal board, if so, return
     if (current.board.isGoal()) {
       this.solvable = false;
-      return;
     } else {
       // Otherwise generate all the neighboring nodes and insert them into PQ
       let neighboards = current.board.neighbors();
@@ -202,6 +209,6 @@ class Solver {
 }
 
 let b = new Board();
-b.init('../../input/8puzzle/puzzle3x3-unsolvable.txt');
+b.init('../../input/8puzzle/puzzle18.txt');
 let s = new Solver(b);
 console.log(s.solution());

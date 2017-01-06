@@ -75,6 +75,7 @@ The notes were written for personal benefit and reference and were intended neit
   - [Max Priority Queue](./src/priority-queues/MaxPriorityQueue.js)
   - [Heapsort](./src/priority-queues/heapsort.js)
   - [8 Puzzle](./src/priority-queues/8puzzle.js)
+  - [8 Puzzle Solver](./src/priority-queues/8puzzleSolver.js)
   
 ## Special Instructions
 To use the graph application for the collinear points pattern recognition solver, open `/src/mergesort/graph.html`
