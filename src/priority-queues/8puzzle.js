@@ -188,8 +188,6 @@ class Board {
         this.goal[i][j] = reference++;
       }
     }
-
-    // console.log('Goal board is', this.goal);
   }
 
   // Board dimension n
@@ -213,7 +211,27 @@ class Board {
 
   // Sum of Manhattan distances between blocks and goal
   manhattan() {
+    let count = 0;
 
+    for (let i = 0; i < this.n; i++) {
+      for (let j = 0; j < this.n; j++) {
+        // Ignore the empty tile
+        if (this.board[i][j] === 0) continue;
+
+        /* 
+         * Reduce the current value by 1 to get an accurate representation of
+         * where the tile is supposed to be.
+         */
+        let current = this.board[i][j] - 1;
+        let correctRow = Math.floor(current / this.n);
+        let correctCol = Math.floor(current % this.n);
+        let distance = Math.abs(i-correctRow) + Math.abs(j-correctCol);
+
+        count += distance;
+      }
+    }
+
+    return count;
   }
 
   // Is the board the goal board?
