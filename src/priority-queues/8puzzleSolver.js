@@ -13,19 +13,19 @@ class MinPriorityQueue {
 
   // Insert a key into the priority queue
   insert(key) {
-    /* Add the key to the end of the heap and increment n, then swim up the heap
-     * to fix any violations that have arisen.
+    /* Add the key to the end of the heap and increment n, then swim up the
+     * heap to fix any violations that have arisen.
      */
     this.heap[++this.n] = key;
     this.swim(this.n);
   }
 
-  // Return the largest key from the priority queue
+  // Return the smallest key from the priority queue
   min() {
     return this.heap[1];
   }
 
-  // Return and remove the largest key from the priority queue
+  // Return and remove the smallest key from the priority queue
   delMin() {
     /*
      * Save reference to the min key.
@@ -54,13 +54,13 @@ class MinPriorityQueue {
     while (2*k <= this.n) {
       /*
        * While the comparison node (k) still has children (2k or 2k+1), check
-       * the parent against both its children. If it is less than either, swap
+       * the parent against both its children. If greater than either, swap
        * it with the larger of its children. Continue sinking down the heap
-       * until a parent is larger than its two children.
+       * until a parent is smaller than its two children.
        */
-      let parent = this.heap[k];
-      let child1 = this.heap[2*k];
-      let child2 = this.heap[2*k + 1];
+      let parent = this.heap[k].priority;
+      let child1 = this.heap[2*k].priority;
+      let child2 = this.heap[2*k + 1].priority;
 
       if (parent > child1 || parent > child2) {
         /*
@@ -75,7 +75,7 @@ class MinPriorityQueue {
           k = 2*k + 1;
         }
       } else {
-        // Return because the parent node is larger than its two children
+        // Return because the parent node is smaller than its two children
         return;
       }
     }
@@ -86,7 +86,7 @@ class MinPriorityQueue {
     while (k > 1 && this.heap[Math.floor(k/2)] > this.heap[k]) {
       /*
        * While not at root node, swap k (parent) with k/2 (child) if
-       * parent<child. Continue swimming upwards until the invariant holds.
+       * parent > child. Continue swimming upwards until the invariant holds.
        */
       [this.heap[k], this.heap[Math.floor(k/2)]]
         = [this.heap[Math.floor(k/2)], this.heap[k]];
