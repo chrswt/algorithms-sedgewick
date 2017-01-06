@@ -128,6 +128,7 @@ const fs = require('fs');
  * nested array. This causes this.board to be mutated on each neighboard
  * generation.
  */
+ 
 const copy = (arr) => {
   return arr.map((row) => {
     return row.map((col) => {
