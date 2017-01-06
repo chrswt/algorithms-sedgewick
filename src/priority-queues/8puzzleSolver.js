@@ -108,18 +108,31 @@ class SearchNode {
 class Solver {
   constructor(Board) {
     this.board = Board;
-    this.solvable = null;
+    this.boardTwin = Board.twin();
     this.minPQ = new MinPriorityQueue();
-    this.moves = 0;
+    this.minPQtwin = new MinPriorityQueue();
     this.solved = false;
+    this.solvable = null;
     this.finalSearchNode = null;
 
     // Instantiate an initial search node and add it to the priority queue
     let initial = new SearchNode(this.board, 0, null);
     this.minPQ.insert(initial);
 
-    while (!this.solved) {
+    // Do the same for a twin board to check if the board is solvable
+    let initialTwin = new SearchNode(this.boardTwin, 0, null);
+    this.minPQtwin.insert(initialTwin);
+
+    // Attempt to solve the board and its twin in lockstep
+    while (!this.solved && this.isSolvable() !== false) {
       this.solve();
+      this.solveTwin();
+    }
+
+    if (this.solved) {
+      console.log('Solved board', this.finalSearchNode);
+    } else {
+      console.log('Unsolvable board');
     }
 
     console.log('FINAL!', this.finalSearchNode);
@@ -127,13 +140,13 @@ class Solver {
 
   // Is the initial board solvable?
   isSolvable() {
-    return this.solvable();
+    return this.solvable;
   }
 
   // Minimum number of moves to solve the initial board, -1 if unsolvable
   moves() {
     if (!this.isSolvable()) return -1;
-    else return this.moves;
+    else return this.finalSearchNode.moves;
   }
 
   // Sequence of boards in a shortest solution, null if unsolvable
@@ -148,6 +161,7 @@ class Solver {
     // Check if the removed search node is the goal board, if so, return
     if (current.board.isGoal()) {
       this.solved = true;
+      this.solvable = true;
       this.finalSearchNode = current;
       return;
     } else {
@@ -163,8 +177,31 @@ class Solver {
       });
     }
   }
+
+  solveTwin() {
+    // Remove the lowest priority search node from the priority queue
+    let current = this.minPQtwin.delMin();
+
+    // Check if the removed search node is the goal board, if so, return
+    if (current.board.isGoal()) {
+      this.solvable = false;
+      return;
+    } else {
+      // Otherwise generate all the neighboring nodes and insert them into PQ
+      let neighboards = current.board.neighbors();
+
+      neighboards.forEach((board) => {
+        // Check if newly generated board is the same as the previous board
+        if (current.previous === null || !current.previous.board.equals(board)) {
+          let newSearchNode = new SearchNode(board, current.moves+1, current);
+          this.minPQtwin.insert(newSearchNode);
+        }
+      });
+    }
+  }
 }
 
 let b = new Board();
-b.init('../../input/8puzzle/puzzle3x3-15.txt');
+b.init('../../input/8puzzle/puzzle3x3-unsolvable.txt');
 let s = new Solver(b);
+console.log(s.solution());
