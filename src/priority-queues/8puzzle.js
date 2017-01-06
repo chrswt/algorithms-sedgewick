@@ -157,8 +157,6 @@ class Board {
       }
     }
 
-    console.log('Built board from file', this.board);
-
     this.constructGoalBoard();
   }
 
@@ -177,7 +175,7 @@ class Board {
       }
     }
 
-    console.log('Goal board is', this.goal);
+    // console.log('Goal board is', this.goal);
   }
 
   // Board dimension n
@@ -332,11 +330,18 @@ class Board {
   }
 }
 
-let b = new Board();
-b.init('../../input/8puzzle/puzzle3x3-15.txt');
-// console.log(b.hamming());
-b.toString();
-let neigh = b.neighbors();
-console.log(neigh);
-// let a = new Board([[1, 2], [3, 4]]);
-// console.log(a.dimension());
+if (!module.parent) {
+  let b = new Board();
+  b.init('../../input/8puzzle/puzzle3x3-15.txt');
+  // console.log(b.hamming());
+  b.toString();
+  let neigh = b.neighbors();
+  console.log(neigh);
+  // let a = new Board([[1, 2], [3, 4]]);
+  // console.log(a.dimension());
+}
+
+module.exports = {
+  Board: Board,
+};
+
