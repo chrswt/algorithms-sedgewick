@@ -84,7 +84,7 @@ class MaxPriorityQueue {
     while (k > 1 && this.heap[Math.floor(k/2)] < this.heap[k]) {
       /*
        * While not at root node, swap k (parent) with k/2 (child) if
-       * parent>child. Continue swimming upwards until the invariant holds.
+       * parent<child. Continue swimming upwards until the invariant holds.
        */
       [this.heap[k], this.heap[Math.floor(k/2)]]
         = [this.heap[Math.floor(k/2)], this.heap[k]];

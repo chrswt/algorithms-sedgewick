@@ -13,7 +13,8 @@ class MinPriorityQueue {
 
   // Insert a key into the priority queue
   insert(key) {
-    /* Add the key to the end of the heap and increment n, then swim up the
+    /*
+     * Add the key to the end of the heap and increment n, then swim up the
      * heap to fix any violations that have arisen.
      */
     this.heap[++this.n] = key;
