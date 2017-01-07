@@ -63,9 +63,9 @@ class MinPriorityQueue {
        * it with the larger of its children. Continue sinking down the heap
        * until a parent is smaller than its two children.
        */
-      let parent = this.heap[k].priority;
-      let child1 = this.heap[2*k].priority;
-      let child2 = this.heap[2*k + 1].priority;
+      let parent = this.heap[k].sum;
+      let child1 = this.heap[2*k].sum;
+      let child2 = this.heap[2*k + 1].sum;
 
       if (parent > child1 || parent > child2) {
         /*
@@ -88,7 +88,7 @@ class MinPriorityQueue {
 
   // Maintains the heap order by swimming up the heap and fixing violations
   swim(k) {
-    while (k > 1 && this.heap[Math.floor(k/2)] > this.heap[k]) {
+    while (k > 1 && this.heap[Math.floor(k/2)].sum > this.heap[k].sum) {
       /*
        * While not at root node, swap k (parent) with k/2 (child) if
        * parent > child. Continue swimming upwards until the invariant holds.
@@ -99,3 +99,94 @@ class MinPriorityQueue {
     }
   }
 }
+
+// Class that holds two integers and its resulting computed sum
+class Taxicab {
+  constructor(i, j) {
+    this.i = i;
+    this.j = j;
+    this.sum = Math.pow(i, 3) + Math.pow(j, 3);
+  }
+}
+
+const taxicabNumbers = (n) => {
+  let minPQ = new MinPriorityQueue();
+
+  /*
+   * Insert the taxicab numbers (1, 1), (2, 2), ... (n, n) into the minimum
+   * priority queue to initially instantiate the queue. This will require O(n)
+   * initialization time and O(n) space.
+   */
+  for (let i = 1; i <= n; i++) {
+    let tc = new Taxicab(i, i);
+    minPQ.insert(tc);
+  }
+
+  /*
+   * Until (a=n, b=n) is reached (i.e. the priority queue is empty), remove
+   * the lowest priority pair of integers (i.e. the integers which sum up to
+   * the lowest value), and add in the pair of integers (a, b+1). If any two
+   * pairs that are removed consecutively have the same computed sum, we have
+   * found a taxicab number that can be expressed by the two pairs of integers
+   * removed consecutively.
+   *
+   * This ensures that this algorithm continues to take O(n) space (because
+   * each pair is being deleted after it has been removed and compared with the
+   * next pair), and the log n process of inserting and deleting from a
+   * priority queue is repeated ~n^2 / 2 times each for insertion and deletion,
+   * resulting in O(n^2 log n) time complexity.
+   */
+  let prev = new Taxicab(0, 0); // acts as a sentinel before we run the loop
+  let badStuff = {};
+
+  while (minPQ.size() !== 0) {
+//    console.log('run');
+    let current = minPQ.delMin();
+    console.log(current);
+
+    if (prev.sum === current.sum) {
+      if (current.i === prev.i && current.j === prev.j) {
+        console.log('wat');
+        // Some bad input
+        if (badStuff[`${current.i}, ${current.j}`]) return;
+//        console.log(badStuff);
+        badStuff[`${current.i}, ${current.j}`] = true;
+      } else {
+        console.log(prev, current);
+      }
+    }
+//    console.log(prev, current);
+    prev = current;
+
+    if (current.j < n) {
+      if (badStuff[`${current.i}, ${current.j+1}`] === undefined)
+      minPQ.insert(new Taxicab(current.i, current.j+1));
+    }
+  }
+
+
+
+//  while (minPQ.size() > 0) {
+//    let current = minPQ.delMin();
+//
+//    if (prev.sum === current.sum) {
+//      if (!(prev.i === current.i && prev.j === current.j)) {
+//        // Do not consider integers where a=b and c=d
+//        console.log(prev, current);
+//      }
+//    }
+//
+//    if (!(prev === current)) {
+//      // Check for self-referencing pointers, and insert new pair of integers
+//      prev = current;
+//      if (current.j < n) {
+//        minPQ.insert(new Taxicab(current.i, current.j + 1));
+//      }
+//    }
+//
+//  }
+
+
+};
+
+taxicabNumbers(16);
