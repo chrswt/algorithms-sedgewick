@@ -84,7 +84,7 @@ class MinPriorityQueue {
 
   // Maintains the heap order by swimming up the heap and fixing violations
   swim(k) {
-    while (k > 1 && this.heap[Math.floor(k/2)] > this.heap[k]) {
+    while (k > 1 && this.heap[Math.floor(k/2)].priority > this.heap[k].priority) {
       /*
        * While not at root node, swap k (parent) with k/2 (child) if
        * parent > child. Continue swimming upwards until the invariant holds.
@@ -210,6 +210,6 @@ class Solver {
 }
 
 let b = new Board();
-b.init('../../input/8puzzle/puzzle18.txt');
+b.init('../../input/8puzzle/puzzle15.txt');
 let s = new Solver(b);
 console.log(s.solution());
