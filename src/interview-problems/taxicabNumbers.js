@@ -56,7 +56,7 @@ class MinPriorityQueue {
 
   // Maintains the heap order by sinking down the heap and fixing violations
   sink(k) {
-    while (2*k <= this.n) {
+    while (2*k < this.n) {
       /*
        * While the comparison node (k) still has children (2k or 2k+1), check
        * the parent against both its children. If greater than either, swap
@@ -137,56 +137,20 @@ const taxicabNumbers = (n) => {
    * resulting in O(n^2 log n) time complexity.
    */
   let prev = new Taxicab(0, 0); // acts as a sentinel before we run the loop
-  let badStuff = {};
 
   while (minPQ.size() !== 0) {
-//    console.log('run');
     let current = minPQ.delMin();
-    console.log(current);
 
     if (prev.sum === current.sum) {
-      if (current.i === prev.i && current.j === prev.j) {
-        console.log('wat');
-        // Some bad input
-        if (badStuff[`${current.i}, ${current.j}`]) return;
-//        console.log(badStuff);
-        badStuff[`${current.i}, ${current.j}`] = true;
-      } else {
-        console.log(prev, current);
-      }
+      console.log(prev, current);
     }
-//    console.log(prev, current);
+
     prev = current;
 
     if (current.j < n) {
-      if (badStuff[`${current.i}, ${current.j+1}`] === undefined)
       minPQ.insert(new Taxicab(current.i, current.j+1));
     }
   }
-
-
-
-//  while (minPQ.size() > 0) {
-//    let current = minPQ.delMin();
-//
-//    if (prev.sum === current.sum) {
-//      if (!(prev.i === current.i && prev.j === current.j)) {
-//        // Do not consider integers where a=b and c=d
-//        console.log(prev, current);
-//      }
-//    }
-//
-//    if (!(prev === current)) {
-//      // Check for self-referencing pointers, and insert new pair of integers
-//      prev = current;
-//      if (current.j < n) {
-//        minPQ.insert(new Taxicab(current.i, current.j + 1));
-//      }
-//    }
-//
-//  }
-
-
 };
 
-taxicabNumbers(16);
+taxicabNumbers(100);
