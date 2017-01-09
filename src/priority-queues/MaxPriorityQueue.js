@@ -49,7 +49,7 @@ class MaxPriorityQueue {
 
   // Maintains the heap order by sinking down the heap and fixing violations
   sink(k) {
-    while (2*k <= this.n) {
+    while (2*k < this.n) {
       /*
        * While the comparison node (k) still has children (2k or 2k+1), check
        * the parent against both its children. If it is less than either, swap
