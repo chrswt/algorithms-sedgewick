@@ -79,6 +79,8 @@ The notes were written for personal benefit and reference and were intended neit
   - [Taxicab Numbers](./src/interview-problems/taxicabNumbers.js)
   - [8 Puzzle](./src/priority-queues/8puzzle.js)
   - [8 Puzzle Solver](./src/priority-queues/8puzzleSolver.js)
+8. Symbol Tables
+  - [Chapter Notes](./notes/3.1-symbol-tables.md)
   
 ## Special Instructions
 To use the graph application for the collinear points pattern recognition solver, open `/src/mergesort/graph.html`
