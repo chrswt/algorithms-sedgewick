@@ -81,6 +81,7 @@ The notes were written for personal benefit and reference and were intended neit
   - [8 Puzzle Solver](./src/priority-queues/8puzzleSolver.js)
 8. Symbol Tables
   - [Chapter Notes](./notes/3.1-symbol-tables.md)
+    - symbol tables, ordered symbol tables, elementary implementations, binary search trees
   
 ## Special Instructions
 To use the graph application for the collinear points pattern recognition solver, open `/src/mergesort/graph.html`
